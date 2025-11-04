@@ -1,60 +1,110 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChevronLeft } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ChevronLeft, Phone, Mail, Send, Blocks, HomeIcon, PlayCircle, Compass, ShoppingCart } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 
-const GoogleIcon = () => (
-    <svg className="w-5 h-5" viewBox="0 0 48 48">
-      <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"></path>
-      <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"></path>
-      <path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"></path>
-      <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.574l6.19,5.238C39.99,34.551,44,29.861,44,24C44,22.659,43.862,21.35,43.611,20.083z"></path>
-    </svg>
-  );
 
-export default function LoginPage() {
+const MessengerIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+);
+
+const WhatsAppIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"></path><path d="M16.5 10.5c-2.2.8-4.3-1.3-3.5-3.5s3.5-3.5 3.5-3.5-2.7 5.7-3.5 3.5z"></path></svg>
+);
+
+
+export default function ContactPage() {
+  const contactOptions = [
+    {
+      icon: <Phone className="w-6 h-6 text-primary" />,
+      text: "আমাদের সাথে সরাসরি কথা বলতে এখানে ক্লিক করুন।",
+      href: "tel:+1234567890"
+    },
+    {
+      icon: <MessengerIcon/>,
+      text: "মেসেঞ্জারে লাইভ চ্যাটের জন্য এখানে ক্লিক করুন।",
+      href: "https://m.me/your-messenger-id"
+    },
+    {
+      icon: <WhatsAppIcon />,
+      text: "হোয়াটসঅ্যাপে লাইভ চ্যাটের জন্য এখানে ক্লিক করুন।",
+      href: "https://wa.me/1234567890"
+    },
+    {
+      icon: <Send className="w-6 h-6 text-primary" />,
+      text: "টেলিগ্রাম সাপোর্টে কথা বলার জন্য এখানে ক্লিক করুন।",
+      href: "https://t.me/your-telegram-id"
+    },
+    {
+      icon: <Mail className="w-6 h-6 text-primary" />,
+      text: "আমাদের সাপোর্টে ইমেইল করতে এখানে ক্লিক করুন।",
+      href: "mailto:support@example.com"
+    }
+  ];
+
   return (
-    <div className="flex flex-col min-h-screen bg-background">
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
       <header className="bg-background/90 backdrop-blur-sm shadow-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link href="/" className="text-foreground">
               <ChevronLeft className="w-6 h-6" />
             </Link>
-            <div className="flex items-center space-x-2">
-              <h1 className="text-xl font-bold text-foreground">
-                 <span className="text-blue-600">TOPUP</span><span className="text-red-600">BUZZ</span>
-              </h1>
-            </div>
-            {/* Placeholder for right side content */}
+            <h1 className="text-xl font-bold text-foreground">Contact Us</h1>
             <div className="w-6"></div>
           </div>
         </div>
       </header>
-      <main className="flex-grow flex items-center justify-center container mx-auto p-4">
-        <Card className="w-full max-w-sm">
-          <CardHeader className="text-center">
-            <CardTitle className="text-2xl">Create an Account</CardTitle>
-            <CardDescription>
-              Create an account to get started with TopUpBuzz.
-            </CardDescription>
+
+      <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-center font-bangla">যোগাযোগ করুন</CardTitle>
           </CardHeader>
-          <CardContent>
-            <Button variant="outline" className="w-full">
-              <GoogleIcon />
-              Sign in with Google
-            </Button>
+          <CardContent className="space-y-4">
+            {contactOptions.map((option, index) => (
+              <a
+                key={index}
+                href={option.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-4 border rounded-lg hover:bg-muted transition-colors"
+              >
+                {option.icon}
+                <span className="font-bangla text-sm">{option.text}</span>
+              </a>
+            ))}
           </CardContent>
-          <CardFooter className="text-xs text-muted-foreground text-center">
-            <p>
-              By creating an account, you agree to our Terms of Service and Privacy Policy.
-            </p>
-          </CardFooter>
         </Card>
       </main>
+
+      <div className="fixed bottom-0 left-0 right-0 bg-background/90 backdrop-blur-sm border-t border-border z-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-around items-center h-16">
+            <Link href="/" className="flex flex-col items-center text-muted-foreground hover:text-primary">
+              <HomeIcon className="w-6 h-6" />
+              <span className="text-xs">Home</span>
+            </Link>
+            <a href="https://youtu.be/OSE4qFSRqgs" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center text-muted-foreground hover:text-primary">
+              <PlayCircle className="w-6 h-6" />
+              <span className="text-xs">Tutorial</span>
+            </a>
+            <Link href="/topup" className="flex flex-col items-center text-muted-foreground hover:text-primary">
+              <Compass className="w-6 h-6" />
+              <span className="text-xs">TopUp</span>
+            </Link>
+            <Link href="/orders" className="flex flex-col items-center text-muted-foreground hover:text-primary">
+                <ShoppingCart className="w-6 h-6" />
+                <span className="text-xs">My Orders</span>
+            </Link>
+            <Link href="/contact" className="flex flex-col items-center text-primary">
+              <Blocks className="w-6 h-6" />
+              <span className="text-xs">Contact Us</span>
+            </Link>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
